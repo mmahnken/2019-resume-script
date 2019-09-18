@@ -1,8 +1,9 @@
 import requests
+import os
 
 
 RESUME_CSV_FILENAME = os.environ.get('RESUME_CSV_FILENAME')
-RESUME_FOLDER = os.environ.get('RESUME_CSV_FILENAME')
+RESUME_FOLDER = os.environ.get('RESUME_FOLDER')
 
 
 def save(url, destination_folder, new_filename):
@@ -26,7 +27,7 @@ def process_url_csv(filename):
 		tokens = resume_url.split('.')
 		no_mimetype = tokens[-2].split('/')[-1]
 		mimetype = tokens[-1]
-		new_filename = no_mimetype + mimetype
+		new_filename = no_mimetype + "." + mimetype
 		
 		save(resume_url, RESUME_FOLDER, new_filename)
 
